@@ -1,12 +1,12 @@
 intigriti:
-    api-key: "5FD44C1C2BCF8209C2AFF83E6112475B70C6587F92EB0E88468A80AA5AB8866D-1"
+    api-key: ""
 
 hackerone:
-    hacker-user: "eeeeee_e_e_e"
-    hacker-key: "iYVzDOofmdzRU9bBQxlsSlSKgogmLAWCfjP86YDOl+o="
+    hacker-user: ""
+    hacker-key: ""
 
 bugcrowd:
-    bug_token: "eyJraWQiOiJjb29raWUtc2lnbmluZy1rZXktMiIsImFsZyI6IlJTMjU2IiwidHlwIjoiSldUIn0.eyJpc3MiOiJodHRwczovL2lkZW50aXR5LmJ1Z2Nyb3dkLmNvbSIsImF1ZCI6WyJodHRwczovL2lkZW50aXR5LmJ1Z2Nyb3dkLmNvbSIsImh0dHBzOi8vYnVnY3Jvd2QuY29tIl0sImlhdCI6MTcxNDExNTI1NiwibmJmIjoxNzE0MTE1MjU2LCJzZXNzaW9uSWQiOiI0Yzk1ZjY2YS1kMTAzLTQ5YjAtOGMzMC00ZTM2YTg1MjU4MzMifQ.Mkt_ITlwPTWMC0M14mCbAiTDaGeGtPlZTici6xGNInkz7s7hPFI6bKv_RwTjFg50O9Nfc7ngLP3s71UOVgBs1cFqRZ5yo0W0h7zqvHhLq-zx6c40a4b4Tlkgg1-W5ly0_ck7iymVbePS4nT4GTvQ7DXKMOf7PLuRs0JnUPMspqY2hNUM1D-Sr9-bJ-ebNdXSX2fgQ9MUFoF8koAzz-oQOxNy4I8g4ExW203k0Vrsv5Gmyh4hbMe3sMZxDGPYRTDby-Xt4fEblQ0ZP-OZ6mPnmu-b0OoYtWKj09ZV-h2JuxCcbSM1zT2BafXDK7Ju-MNjnqPJeu9hoJ4-TCFW-xqsrfJASSsRyMs_vd_T2tnPbVemSv9joQPDYAhCc_nd9IIdOev_2UYaoosiD61bfRsGkXPb27hQ0zIaDnMrJb_qQGjVRC2INOzfScFtVyR_ZnST7UbEbF_TV5ugjOyiRxA_rlr_wk1HvlKeA4cV5XU4xOEX3vCbKJTVqKmAi0xSpCsmikw0uor7vPnhwtxrSS9T8CjLPHrTU7Y4vs9TcNJuQUhJp5oFvaGhpA1m0QCSQX0TNpnRdhAAmP-q-zV1f2XBBmi3cZfTpwXxKF3cYsBKlVt55srsnWNof83Yg96OB044nXTAsYzWEIyqEz7WVeenPyhvHaBAg86TagnjF1CDv0U"
+    bug_token: ""
 
 inspectiv:
-    in_token: "062871116d91e1345b94a00330109938b6654ff9"
+    in_token: ""

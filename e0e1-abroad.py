@@ -546,7 +546,7 @@ class inspectiv:
         self.in_result = []
         self.headers = {
             'accept': 'application/json, text/plain, */*',
-            'authorization': 'Token 062871116d91e1345b94a00330109938b6654ff9',
+            'authorization': f'Token {CONFIG().in_token}',
             'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
         }
 

@@ -5,6 +5,7 @@ import requests
 import pandas as pd
 import concurrent.futures
 import re
+import os
 from bs4 import BeautifulSoup
 from colorama import Fore
 from yaml import safe_load
@@ -14,7 +15,8 @@ requests.packages.urllib3.disable_warnings()
 
 class CONFIG:
     def __init__(self):
-        config = safe_load(open("./config.yaml", "r"))
+        config_path = os.path.join(os.path.dirname(__file__), "config.yaml")
+        config = safe_load(open(config_path, "r").read())
         self.suffix_com = ['net', 'fr', 'me', 'ch', 'at', 'de', 'co', 'pt', 'se', 'it', 'pl', 'cloud', 'es', 'eu', 'be', 'jp', 'fi', 'nl', 'io', 'lu', 'link', 'tv', 'dk', 'info', 'ca', 'team', 'hu', 'com', 'cm', 'ie', 'no']
 
         self.it_api = config['intigriti']['api-key']

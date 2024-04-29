@@ -5,11 +5,11 @@
 > 用于收集国外众测项目内容，如项目其中的url、根域、app对应的内容等
 > 可用于联结自动化工具，进行扫描、信息收集、漏扫、fuzz等
 
-> 当前支持的国外众测系统：Intigriti、Hackerone、Bugcrowd、Openbugbounty、immunefi、inspectiv
+> 当前支持的国外众测系统：Intigriti、Hackerone、Bugcrowd、Openbugbounty、immunefi、inspectiv、yeswehack
 
 ### config配置
 
-> 需要进行配置的有：intigriti、hackerone、bugcrowd、inspectiv
+> 需要进行配置的有：intigriti、hackerone、bugcrowd、inspectiv、yeswehack
 
 intigriti api-key配置：[key获取地址](https://app.intigriti.com/researcher/personal-access-tokens)
 
@@ -17,7 +17,9 @@ hackerone 配置：[key获取地址](https://hackerone.com/settings/api_token/ed
 
 Bugcrowd 配置：登录以后，获取cookie中 _bugcrowd_session的值
 
-inspectiv 配置：登录以后，获取authorization：Token后面的值
+inspectiv 配置：登录以后，获取Authorization：Token后面的值
+
+yeswehack 配置：登录以后，获取Authorization: Bearer后面的值
 
 ### 使用方法
 

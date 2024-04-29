@@ -40,6 +40,10 @@ class CONFIG:
         self.in_max_thead = 5
         self.in_file_xlsx = "./result/inspectiv.xlsx"
 
+        self.yh_token = config["yeswehack"]["yh_token"]
+        self.yh_max_thead = 5
+        self.yh_file_xlsx = "./result/yeswehack.xlsx"
+
 
 class Common:
     class Colored(object):
@@ -86,7 +90,7 @@ class Common:
             return error_list + url_list, error_root_list + root_list
         except Exception as e:
             print(Common.Colored().red("bug :{}".format(e)))
-            return [["",""]],[["",""]]
+            return [["", ""]], [["", ""]]
 
     def split_list_root(self, sublists):
         try:
@@ -104,7 +108,7 @@ class Common:
             return processed_list
         except Exception as e:
             print(Common.Colored().red("bug :{}".format(e)))
-            return [["",""]]
+            return [["", ""]]
 
     def url_optimize(self, url_result2):
         try:
@@ -120,7 +124,8 @@ class Common:
                 return (sorted(list(filter(None, root_result)), key=Intigriti().custom_sort)), (sorted(list(filter(None, url_result)), key=Intigriti().custom_sort))
         except Exception as e:
             print(Common.Colored().red("bug :{}".format(e)))
-            return [["",""]],[["",""]]
+            return [["", ""]], [["", ""]]
+
 
 class Process_Print2:
     def __init__(self, file_path):
@@ -612,6 +617,85 @@ class inspectiv:
             print(Common.Colored().red(e))
 
 
+class Yeswehack:
+    def __init__(self):
+        self.yh_result = []
+        self.yh_url = []
+        self.yh_app = []
+        self.yh_auth = []
+        self.headers = {
+            'accept': 'application/json, text/plain, */*',
+            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+            'Authorization': f"Bearer {CONFIG().yh_token}"
+        }
+
+    def set_it_xlsx(self):
+        Process_Print2(CONFIG().yh_file_xlsx).all_xlsx_file(self.yh_result, ['项目值', '项目名称'], "all")
+        if argss.Urlop_tf:
+            root_result, url_result = Common().url_optimize(self.yh_url)
+            Process_Print2(CONFIG().yh_file_xlsx).add_xlsx_file(Common().split_list_root(root_result), ['项目值', '项目名称'], "root")
+            Process_Print2(CONFIG().yh_file_xlsx).add_xlsx_file(url_result, ['项目值', '项目名称'], "url")
+        elif argss.Url_tf:
+            Process_Print2(CONFIG().yh_file_xlsx).add_xlsx_file(self.yh_url, ['项目值', '项目名称'], "url")
+        if argss.App_tf:
+            Process_Print2(CONFIG().yh_file_xlsx).add_xlsx_file(self.yh_app, ['项目值', '项目名称'], "app")
+        Process_Print2(CONFIG().yh_file_xlsx).add_xlsx_file(self.yh_auth, ['项目值', '项目名称'], "auth")
+    def find_jsonkey(self, item_data, name):
+        for item in item_data:
+            type_value = item.get('scope_type')
+            self.yh_result.append([item["scope"], name])
+            if argss.Url_tf:
+                if type_value in ["web-application", "api", "ip-address"]:
+                    self.yh_url.append([item["scope"], name])
+            if argss.App_tf:
+                if type_value in ["mobile-application-android", "mobile-application-ios", "mobile-application"]:
+                    self.yh_app.append([item["scope"], name])
+            if type_value in ["other", "application"]:
+                self.yh_auth.append([item["scope"], name])
+
+    def get_yh_handle(self):
+        try:
+            page_int = 1
+            handle_list = []
+            while True:
+                repose = requests.get(f"https://api.yeswehack.com/programs?page={page_int}&resultsPerPage=50", headers=self.headers, timeout=5, verify=False).json()
+                if not repose["items"]:
+                    break
+                for i in repose["items"]:
+                    handle_list.append(i["slug"])
+                page_int += 1
+            print(Common.Colored().magenta("ye slug列表获取完成"))
+            return handle_list
+        except Exception as e:
+            print(Common.Colored().red(e))
+
+    def get_yh_handle_url(self, handle):
+        try:
+            repose = requests.get(f"https://api.yeswehack.com/programs/{handle}", headers=self.headers, timeout=5, verify=False).json()
+            scope_list = repose["scopes"]
+            self.find_jsonkey(scope_list, handle)
+            print(Common.Colored().green(f"已处理：{handle}"))
+        except Exception as e:
+            print(Common.Colored().red(e))
+
+    def get_yh_parms(self):
+        try:
+            if CONFIG().yh_token == "":
+                print(Common.Colored().red("yeswehack 没有配置token"))
+                exit()
+            else:
+                print(Common.Colored().magenta("yeswehack token已配置"))
+
+            handle_list = self.get_yh_handle()
+            with concurrent.futures.ThreadPoolExecutor(max_workers=CONFIG().yh_max_thead) as executor:
+                executor.map(self.get_yh_handle_url, handle_list)
+
+            self.set_it_xlsx()
+            print(Common.Colored().yellow(f"Yeswehack 已处理完成，结果保存至{CONFIG().yh_file_xlsx}"))
+        except Exception as e:
+            print(Common.Colored().red(e))
+
+
 def args_port():
     try:
         parser = argparse.ArgumentParser(description='Abroad input')
@@ -621,6 +705,7 @@ def args_port():
         parser.add_argument('--ob', dest='Openbugbounty_tf', action='store_true', help='获取Openbugbounty程序内容')
         parser.add_argument('--im', dest='Immunefi_tf', action='store_true', help='获取immunefi程序内容')
         parser.add_argument('--in', dest='Inspectiv_tf', action='store_true', help='获取Inspectiv程序内容')
+        parser.add_argument('--yh', dest='Yeswehack_tf', action='store_true', help='获取Yeswehack程序内容')
         parser.add_argument('--url', dest='Url_tf', action='store_true', help='额外获取url内容')
         parser.add_argument('--app', dest='App_tf', action='store_true', help='额外获取app内容')
         parser.add_argument('--url-op', dest='Urlop_tf', action='store_true', help='选择是否优化url内容')
@@ -666,6 +751,10 @@ def run():
         if argss.Inspectiv_tf:
             print(e0e1_abroad)
             inspectiv().get_in_parms()
+
+        if argss.Yeswehack_tf:
+            print(e0e1_abroad)
+            Yeswehack().get_yh_parms()
     except Exception as e:
         print("__run bugs: {}".format(e))
 

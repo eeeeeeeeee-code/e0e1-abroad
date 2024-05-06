@@ -220,7 +220,7 @@ class Intigriti:
             print(Common.Colored().magenta("开始收集it-url"))
         else:
             print(Common.Colored().red("请设置it-key"))
-            exit()
+            exit(0)
 
         with concurrent.futures.ThreadPoolExecutor(max_workers=CONFIG().it_max_thead) as executor:
             executor.map(self.fetch_data, self.get_it_id())
@@ -277,7 +277,7 @@ class Hackerone:
                 response = requests.get(api_url, auth=(self.h1_user, self.h1_key))
                 if response.status_code != 200:
                     print(Common.Colored().red("回显不为200，重新配置h1 user和key"))
-                    exit()
+                    exit(0)
                 h1_req = response.json().get("data")
                 if not h1_req:
                     return prams
@@ -306,7 +306,7 @@ class Hackerone:
                 print(Common.Colored().magenta("h1已配置"))
             else:
                 print(Common.Colored().red("h1 user和key未配置"))
-                exit()
+                exit(0)
 
             id_params = Hackerone().get_h1_id()
             with concurrent.futures.ThreadPoolExecutor(max_workers=CONFIG().h1_max_thead) as executor:
@@ -389,7 +389,7 @@ class Bugcrowd:
         try:
             if CONFIG().bc_token == "":
                 print(Common.Colored().red("bc_token未设置"))
-                exit()
+                exit(0)
             else:
                 print(Common.Colored().magenta("bc_token已经设置"))
 
@@ -605,7 +605,7 @@ class inspectiv:
         try:
             if CONFIG().in_token == "":
                 print(Common.Colored().red("请配置in_token"))
-                exit()
+                exit(0)
             else:
                 print(Common.Colored().magenta("已配置in_token"))
 
@@ -684,7 +684,7 @@ class Yeswehack:
         try:
             if CONFIG().yh_token == "":
                 print(Common.Colored().red("yeswehack 没有配置token"))
-                exit()
+                exit(0)
             else:
                 print(Common.Colored().magenta("yeswehack token已配置"))
 
@@ -726,7 +726,8 @@ def run():
 |  / _ \ | | |/ _ \ |_____ / _` | '_ \| '__/ _ \ / _` |/ _` | |
 | |  __/ |_| |  __/ |_____| (_| | |_) | | | (_) | (_| | (_| | |
 |  \___|\___/ \___|_|      \__,_|_.__/|_|  \___/ \__,_|\__,_| |
-|                  -- by: eeeeee --                           |                                  
+|                  -- by: eeeeee --                           |         
+|           -- 该工具仅用于学习参考，均与作者无关 --                 |              
  --------------------------------------------------------------
        ''')
 

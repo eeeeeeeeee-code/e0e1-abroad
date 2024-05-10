@@ -160,16 +160,16 @@ class Intigriti:
         }
 
     def set_it_xlsx(self):
-        Process_Print2(CONFIG().h1_file_xlsx).all_xlsx_file(self.it_result, ['项目值', '项目名称'], "all")
+        Process_Print2(CONFIG().it_file_xlsx).all_xlsx_file(self.it_result, ['项目值', '项目名称'], "all")
         if argss.Urlop_tf:
             root_result, url_result = Common().url_optimize(self.it_url_result)
-            Process_Print2(CONFIG().h1_file_xlsx).add_xlsx_file(Common().split_list_root(root_result), ['项目值', '项目名称'], "root")
-            Process_Print2(CONFIG().h1_file_xlsx).add_xlsx_file(url_result, ['项目值', '项目名称'], "url")
+            Process_Print2(CONFIG().it_file_xlsx).add_xlsx_file(Common().split_list_root(root_result), ['项目值', '项目名称'], "root")
+            Process_Print2(CONFIG().it_file_xlsx).add_xlsx_file(url_result, ['项目值', '项目名称'], "url")
         else:
-            Process_Print2(CONFIG().h1_file_xlsx).add_xlsx_file(self.it_url_result, ['项目值', '项目名称'], "url")
+            Process_Print2(CONFIG().it_file_xlsx).add_xlsx_file(self.it_url_result, ['项目值', '项目名称'], "url")
         if argss.App_tf:
-            Process_Print2(CONFIG().h1_file_xlsx).add_xlsx_file(self.it_app_result, ['项目值', '项目名称'], "app")
-        Process_Print2(CONFIG().h1_file_xlsx).add_xlsx_file(self.it_auth_result, ['项目值', '项目名称'], "auth")
+            Process_Print2(CONFIG().it_file_xlsx).add_xlsx_file(self.it_app_result, ['项目值', '项目名称'], "app")
+        Process_Print2(CONFIG().it_file_xlsx).add_xlsx_file(self.it_auth_result, ['项目值', '项目名称'], "auth")
 
     def find_jsonkey(self, item_data, key, name):
         try:
@@ -727,7 +727,7 @@ def run():
 | |  __/ |_| |  __/ |_____| (_| | |_) | | | (_) | (_| | (_| | |
 |  \___|\___/ \___|_|      \__,_|_.__/|_|  \___/ \__,_|\__,_| |
 |                  -- by: eeeeee --                           |         
-|           -- 该工具仅用于学习参考，均与作者无关 --                 |              
+|           -- 该工具仅用于学习参考，均与作者无关 --          |              
  --------------------------------------------------------------
        ''')
 

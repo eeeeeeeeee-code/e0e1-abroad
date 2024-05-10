@@ -33,4 +33,7 @@ python3 e0e1-abroad.py -it --url --app
 3.获取Intigriti 所有程序内容，且额外提取url、app的内容出来，并且将url的内容进行优化
 python3 e0e1-abroad.py -it --url --app --url-op
 ```
+### 效果展示
+![image](https://github.com/eeeeeeeeee-code/e0e1-abroad/assets/115862499/5d2301af-6b75-4f91-8ac2-2a92b1631d29)
+
 

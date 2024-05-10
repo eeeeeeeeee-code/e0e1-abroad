@@ -16,7 +16,7 @@ requests.packages.urllib3.disable_warnings()
 class CONFIG:
     def __init__(self):
         config_path = os.path.join(os.path.dirname(__file__), "config.yaml")
-        config = safe_load(open(config_path, "r").read())
+        config = safe_load(open(config_path, "r",encoding="utf-8").read())
         self.suffix_com = ['net', 'fr', 'me', 'ch', 'at', 'de', 'co', 'pt', 'se', 'it', 'pl', 'cloud', 'es', 'eu', 'be', 'jp', 'fi', 'nl', 'io', 'lu', 'link', 'tv', 'dk', 'info', 'ca', 'team', 'hu', 'com', 'cm', 'ie', 'no']
 
         self.it_api = config['intigriti']['api-key']

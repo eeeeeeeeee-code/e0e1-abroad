@@ -34,6 +34,6 @@ python3 e0e1-abroad.py -it --url --app
 python3 e0e1-abroad.py -it --url --app --url-op
 ```
 ### 效果展示
-![image](https://github.com/eeeeeeeeee-code/e0e1-abroad/assets/115862499/5d2301af-6b75-4f91-8ac2-2a92b1631d29)
+![image](https://github.com/eeeeeeeeee-code/e0e1-abroad/assets/115862499/069ecfa2-ba08-4044-bedf-793106f715cc)
 
 

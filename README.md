@@ -37,3 +37,4 @@ python3 e0e1-abroad.py -it --url --app --url-op
 ![image](https://github.com/eeeeeeeeee-code/e0e1-abroad/assets/115862499/069ecfa2-ba08-4044-bedf-793106f715cc)
 
 
+![0482e1b53827cb22e5407b3608551c6](https://github.com/eeeeeeeeee-code/e0e1-abroad/assets/115862499/e1a514d9-07d1-4e24-8509-171b380f090b)
